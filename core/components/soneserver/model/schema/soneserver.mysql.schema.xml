@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="soneserver" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="soneserver"
+       version="1.1">
+
+    <object class="sOneServerSite" table="soneserver_sites" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="domain" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="protocol" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="modx_site_version" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="modx_new_version" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="update" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+        <field key="client" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    <object class="sOneServerFtp" table="soneserver_ftps" extends="xPDOSimpleObject">
+        <field key="host" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="port" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="login" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="password" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="path" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="site" dbtype="int" precision="11" phptype="integer" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="host" name="host" primary="false" unique="false" type="BTREE">
+            <column key="host" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    <object class="sOneServerSsh" table="soneserver_sshs" extends="xPDOSimpleObject">
+        <field key="host" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="port" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="login" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="password" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="path" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="site" dbtype="int" precision="11" phptype="integer" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="host" name="host" primary="false" unique="false" type="BTREE">
+            <column key="host" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    <object class="sOneServerMysql" table="soneserver_mysqls" extends="xPDOSimpleObject">
+        <field key="host" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="port" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="login" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="password" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="site" dbtype="int" precision="11" phptype="integer" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="host" name="host" primary="false" unique="false" type="BTREE">
+            <column key="host" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+    <object class="sOneServerAccount" table="soneserver_accounts" extends="xPDOSimpleObject">
+        <field key="manager" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="login" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="password" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="site" dbtype="int" precision="11" phptype="integer" null="false" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+
+        <index alias="manager" name="manager" primary="false" unique="false" type="BTREE">
+            <column key="manager" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+    </object>
+
+</model>
