@@ -217,7 +217,7 @@ Ext.extend(sOneServer.grid.Sshs, MODx.grid.Grid, {
             sortable: false,
             width: 150,
         }, {
-            header: _('soneserver_ssh_site_name'),
+            header: _('soneserver_ssh_site'),
             dataIndex: 'site_name',
             sortable: false,
             width: 150,

@@ -54,6 +54,17 @@ class sOneServerSiteGetListProcessor extends modObjectGetListProcessor
         $array = $object->toArray();
         $array['actions'] = [];
 
+        // Update version
+        $array['actions'][] = [
+            'cls' => '',
+            'icon' => 'icon icon-download',
+            'title' => $this->modx->lexicon('soneserver_site_updated'),
+            //'multiple' => $this->modx->lexicon('soneserver_site_updated'),
+            'action' => 'updateVersionSite',
+            'button' => true,
+            'menu' => true,
+        ];
+
         // Edit
         $array['actions'][] = [
             'cls' => '',

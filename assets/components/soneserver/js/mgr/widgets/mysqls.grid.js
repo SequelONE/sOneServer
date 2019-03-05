@@ -212,7 +212,7 @@ Ext.extend(sOneServer.grid.Mysqls, MODx.grid.Grid, {
             sortable: false,
             width: 100,
         }, {
-            header: _('soneserver_mysql_site_name'),
+            header: _('soneserver_mysql_site'),
             dataIndex: 'site_name',
             sortable: false,
             width: 150,

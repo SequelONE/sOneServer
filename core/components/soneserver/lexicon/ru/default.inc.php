@@ -18,6 +18,7 @@ $_lang['soneserver_site_client'] = 'Клиент';
 $_lang['soneserver_site_active'] = 'Активно';
 
 $_lang['soneserver_site_create'] = 'Добавить сайт';
+$_lang['soneserver_site_updated'] = 'Обновить данные';
 $_lang['soneserver_site_update'] = 'Изменить сайт';
 $_lang['soneserver_site_enable'] = 'Включить сайт';
 $_lang['soneserver_sites_enable'] = 'Включить сайты';
@@ -28,6 +29,9 @@ $_lang['soneserver_sites_remove'] = 'Удалить сайты';
 $_lang['soneserver_site_remove_confirm'] = 'Вы уверены, что хотите удалить этот сайт?';
 $_lang['soneserver_sites_remove_confirm'] = 'Вы уверены, что хотите удалить эти сайты?';
 $_lang['soneserver_site_active'] = 'Включено';
+
+$_lang['soneserver_action_download'] = 'Загрузить';
+$_lang['soneserver_confirm_download'] = 'Вы уверены, что хотите выполнить загрузку? Текущие данные будут обновлены.';
 
 $_lang['soneserver_site_err_name'] = 'Вы должны указать имя сайта.';
 $_lang['soneserver_site_err_ae'] = 'Сайт с таким именем уже существует.';

@@ -12,6 +12,7 @@ sOneServer.grid.Sites = function (config) {
         baseParams: {
             action: 'mgr/site/getlist'
         },
+        save_action: 'mgr/site/updateversion',
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
                 var row = grid.store.getAt(rowIndex);
@@ -181,6 +182,19 @@ Ext.extend(sOneServer.grid.Sites, MODx.grid.Grid, {
         })
     },
 
+    updateVersionSite: function(response) {
+        Ext.Msg.confirm(
+            _('soneserver_action_download') || _('warning'),
+            _('soneserver_confirm_download'),
+            function(e) {
+                if (e == 'yes') {
+                    this.setActionUpdateVersion('download', 'false', 0);
+                } else {
+                    this.fireEvent('cancel');
+                }
+            },this);
+    },
+
     getFields: function () {
         return ['id', 'name', 'domain', 'protocol', 'modx_site_version', 'modx_new_version', 'update', 'client', 'active', 'actions'];
     },
@@ -245,9 +259,33 @@ Ext.extend(sOneServer.grid.Sites, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('soneserver_site_create'),
-            handler: this.createSite,
-            scope: this
+            text: '<i class="icon icon-cogs"></i> ',
+            menu: [{
+                text: '<i class="icon icon-download"></i> ' + _('soneserver_site_updated'),
+                cls: 'soneserver-cogs',
+                handler: this.updateVersionSite,
+                scope: this
+            }, '-', {
+                text: '<i class="icon icon-plus"></i> ' + _('soneserver_site_create'),
+                cls: 'soneserver-cogs',
+                handler: this.createSite,
+                scope: this
+            }, {
+                text: '<i class="icon icon-trash-o red"></i> ' + _('soneserver_site_remove'),
+                cls: 'soneserver-cogs',
+                handler: this.removeSite,
+                scope: this
+            }, {
+                text: '<i class="icon icon-toggle-on green"></i> ' + _('soneserver_site_active'),
+                cls: 'soneserver-cogs',
+                handler: this.enableSite,
+                scope: this
+            }, {
+                text: '<i class="icon icon-toggle-off red"></i> ' + _('soneserver_site_disable'),
+                cls: 'soneserver-cogs',
+                handler: this.disableSite,
+                scope: this
+            }]
         }, '->', {
             xtype: 'soneserver-field-search',
             width: 250,
@@ -284,6 +322,33 @@ Ext.extend(sOneServer.grid.Sites, MODx.grid.Grid, {
             }
         }
         return this.processEvent('click', e);
+    },
+
+    setActionUpdateVersion: function(method, field, value) {
+        
+        MODx.Ajax.request({
+            url: sOneServer.config.connector_url,
+            params: {
+                action: 'mgr/site/updateversion',
+                method: method,
+                field_name: field,
+                field_value: value
+            },
+            listeners: {
+                success: {
+                    fn: function() {
+                        this.refresh();
+                    },
+                    scope: this
+                },
+                failure: {
+                    fn: function(response) {
+                        MODx.msg.alert(_('error'), response.message);
+                    },
+                    scope: this
+                }
+            }
+        })
     },
 
     _getSelectedIds: function () {
